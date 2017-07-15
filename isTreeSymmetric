@@ -1,0 +1,40 @@
+//
+// Definition for binary tree:
+// class Tree<T> {
+//   Tree(T x) {
+//     value = x;
+//   }
+//   T value;
+//   Tree<T> left;
+//   Tree<T> right;
+// }
+boolean isTreeSymmetric(Tree<Integer> t) {
+    
+    if(t == null){
+        return true;
+    }
+    
+    if(t.left == null && t.right == null){
+        return true;
+    }else if(t.left == null | t.right == null){
+        return false;
+    }else{
+      
+         return isMirror(t.left,t.right);
+        
+    }
+    
+
+}
+
+boolean isMirror(Tree<Integer> node1,Tree<Integer> node2){
+    if(node1 == null && node2 == null){
+        return true;
+    }
+    
+     if (node1 != null && node2 != null && node1.value == node2.value)
+            return (isMirror(node1.left, node2.right)
+                    && isMirror(node1.right, node2.left));
+    
+     return false;
+}
