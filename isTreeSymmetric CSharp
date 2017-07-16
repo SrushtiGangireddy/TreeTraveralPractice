@@ -1,0 +1,29 @@
+//
+// Definition for binary tree:
+// class Tree<T> {
+//   public T value { get; set; }
+//   public Tree<T> left { get; set; }
+//   public Tree<T> right { get; set; }
+// }
+bool isTreeSymmetric(Tree<int> t) {
+    if (t == null)
+        return true;
+    return isSymmetric(t.left, t.right);
+}
+bool isSymmetric(Tree<int> l, Tree<int> r)
+{
+    if (l == null && r == null)
+        return true;
+    else if (r == null || l == null)
+        return false;
+ 
+    if (l.value != r.value)
+        return false;
+ 
+    if (!isSymmetric(l.left, r.right))
+        return false;
+    if (!isSymmetric(l.right, r.left))
+        return false;
+ 
+    return true;
+}
